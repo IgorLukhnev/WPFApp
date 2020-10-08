@@ -1,0 +1,38 @@
+﻿<Window x:Class="Careers.UI.ExperienceEditor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Careers.UI"
+        mc:Ignorable="d"
+        MinHeight="280" MaxHeight="320"
+        MinWidth="435" MaxWidth="445"
+        Title="ExperienceEditor" Height="300" Width="440">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Опыт работы" Grid.ColumnSpan="2" Grid.Row="0" FontSize="20" HorizontalAlignment="Center"/>
+        <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="1">
+            <TextBlock Text="Начало работы" Margin="5 5"/>
+            <DatePicker Name="userStartWorkExp" Margin="5 5"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
+            <TextBlock Text="Окончание работы" Margin="5 5"/>
+            <DatePicker Name="userEndWorkExp" Margin="5 5"/>
+        </StackPanel>
+        <TextBlock Text="Компания" Grid.Column="0" Grid.Row="2" Margin="5 5"/>
+        <TextBox x:Name="userCompanyExp" Grid.Column="1" Grid.Row="2" Margin="5 5"/>
+        <TextBlock Text="Подробности" Grid.Column="0" Grid.Row="3" Margin="5 5"/>
+        <TextBox x:Name="userDescriptionExp" Grid.Column="1" Grid.Row="3" MinHeight="150" Margin="5 5"/>
+        <Button x:Name="addExperience" Content="Сохранить" Grid.ColumnSpan="2" Grid.Row="4" Width="400"/>
+    </Grid>
+</Window>

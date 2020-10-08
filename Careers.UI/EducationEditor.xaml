@@ -1,0 +1,43 @@
+﻿<Window x:Class="Careers.UI.EducationEditor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Careers.UI"
+        mc:Ignorable="d"
+        MinHeight="150" MaxHeight="200"
+        MinWidth="225" MaxWidth="250"
+        Title="Добавить образование" Height="150" Width="225">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Степень образования" Grid.Column="0" Grid.Row="0"/>
+        <ComboBox x:Name="userDegree" Grid.Column="1" Grid.Row="0" IsEditable="True">
+            <TextBlock Text="Бакалавр"/>
+            <TextBlock Text="Магистр"/>
+            <TextBlock Text="Специалист"/>
+            <TextBlock Text="Аспирант"/>
+            <TextBlock Text="Доктор наук"/>
+        </ComboBox>
+        <TextBlock Text="ВУЗ" Grid.Column="0" Grid.Row="1"/>
+        <ComboBox Name="userUniversity" Grid.Column="1" Grid.Row="1" IsEditable="True">
+
+        </ComboBox>
+        <TextBlock Text="Специальность" Grid.Column="0" Grid.Row="2"/>
+        <ComboBox Name="userSpecialization" Grid.Column="1" Grid.Row="2" IsEditable="True">
+
+        </ComboBox>
+        <TextBlock Text="Дата выпуска" Grid.Column="0" Grid.Row="3"/>
+        <DatePicker Grid.Row="3" Grid.Column="1"/>
+        <Button x:Name="addNewEducation" Content="Сохранить" Grid.ColumnSpan="2" Grid.Row="4"/>
+    </Grid>
+</Window>

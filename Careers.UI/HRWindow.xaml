@@ -1,0 +1,44 @@
+﻿<Window x:Class="Careers.UI.HRWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Careers.UI"
+        mc:Ignorable="d"
+        Title="Мои " Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="textBlockGreetingHR" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" FontSize="18"/>
+        <CheckBox x:Name="checkBoxAppliedVacancies" Content="Показать вакансии с откликами" Grid.Column="1" Grid.Row="0"/>
+        <ListBox Grid.Row="1" Grid.Column="0" x:Name="listBoxVacancies">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="{Binding Title}" FontSize="18" FontWeight="Black"/>
+                            <TextBlock Text="{Binding Company}" FontSize="12" FontWeight="Light"/>
+                            <TextBlock Text="{Binding Description}" FontSize="14"/>
+                        </StackPanel>
+                        <TextBlock Text="{Binding Salary}" Grid.Column="1"/>
+                        <Button x:Name="showApplies" Content="Посмотреть отклики" Grid.Column="2" Click="showApplies_Click"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <StackPanel Grid.Column="1" Grid.Row="1" MinWidth="100" MaxWidth="150" MinHeight="35" MaxHeight="50">
+            <Button x:Name="addNewVacancy" Content="Добавить вакансию"/>
+        </StackPanel>
+    </Grid>
+</Window>
