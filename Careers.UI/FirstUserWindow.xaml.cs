@@ -25,6 +25,7 @@ namespace Careers.UI {
 
         public FirstUserWindow(Repository repo)
         {
+            InitializeComponent();
             textBlockGreeting.Text = $"There are {repo.Vacancies.Count} vacancies to apply, {repo.CurrentUser.Name}";
             userInfo.Click += UserInfo_Click;
             userApplies.Click += UserApplies_Click;

@@ -23,9 +23,13 @@ namespace Careers.UI {
         public Registration()
         {
             InitializeComponent();
+        }
+        public Registration(Repository repo)
+        {
+            this.repo = repo;
+            InitializeComponent();
             buttonRegistration.Click += ButtonRegistration_Click;
-            var toWork = new Repository();
-            repo = toWork;
+            userUniversity.ItemsSource = LocalFiles.LoadUniversities();
         }
 
         private void ButtonRegistration_Click(object sender, RoutedEventArgs e)
@@ -49,6 +53,8 @@ namespace Careers.UI {
             var description = userDescriptionExp.Text;
             repo.CreateNewUser(name, surname, email, birthDate, nickname, password, university, degree,
                 specialization, graduateDate, softSkills, hardSkills, startExp, endExp, company, description);
+            Console.WriteLine(repo.CurrentUser.Username);
+            repo.SaveConfig();
             var userWindow = new FirstUserWindow(repo);
             userWindow.Show();
             this.Close();

@@ -71,9 +71,7 @@
                             <TextBlock Text="Доктор наук"/>
                         </ComboBox>
                         <TextBlock Text="ВУЗ" Grid.Column="0" Grid.Row="10"/>
-                        <ComboBox Name="userUniversity" Grid.Column="1" Grid.Row="10" IsEditable="True">
-
-                        </ComboBox>
+                        <ComboBox Name="userUniversity" Grid.Column="1" Grid.Row="10" IsEditable="True" IsReadOnly="False"/>
                         <TextBlock Text="Специальность" Grid.Column="0" Grid.Row="11"/>
                         <TextBox Name="userSpecialization" Grid.Column="1" Grid.Row="11"/>
                         <TextBlock Text="Дата выпуска" Grid.Column="0" Grid.Row="12"/>

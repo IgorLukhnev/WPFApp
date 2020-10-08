@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Careers.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,16 +19,19 @@ namespace Careers.UI {
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
+        private Repository repo;
         public MainWindow()
         {
             InitializeComponent();
             buttonRegist.Click += ButtonRegister_Click;
             buttonLogin.Click += ButtonLogin_Click;
+            var toWork = new Repository();
+            repo = toWork;
         }
 
         private void ButtonRegister_Click(object sender, RoutedEventArgs e)
         {
-            var registration = new Registration();
+            var registration = new Registration(repo);
             registration.Show();
             this.Close();
         }

@@ -11,7 +11,7 @@ namespace Careers.Core.Model {
         Doctor
     }
     public class Education {
-        public University University { get; set; }
+        public string University { get; set; }
         public Degree Degree { get; set; }
         public string Program { get; set; }
         public DateTime GraduateDate { get; set; }
