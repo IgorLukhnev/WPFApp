@@ -38,7 +38,7 @@ namespace Careers.UI {
 
         private void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
-            var login = new Login();
+            var login = new Login(repo);
             login.Show();
             this.Close();
         }

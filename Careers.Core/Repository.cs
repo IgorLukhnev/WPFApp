@@ -1,22 +1,25 @@
 ﻿using Careers.Core.Model;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
 namespace Careers.Core {
     public class Repository {
         public User CurrentUser { get; set; }
-        public List<string> Universities { get; set; }
+        public List<University> Universities { get; set; }
         public List<User> Users { get; set; }
         public List<Recruter> Recruters { get; set; }
         public List<Vacancy> Vacancies { get; set; }
+        public Recruter CurrentHR { get; set; }
 
         public Repository()
         {
             Universities = LocalFiles.LoadUniversities();
             Users = LocalFiles.LoadUserConfig();
-            Recruters = new List<Recruter>();
+            Recruters = LocalFiles.LoadHRConfig();
             Vacancies = new List<Vacancy>();
         }
 
@@ -56,9 +59,33 @@ namespace Careers.Core {
             };
             Users.Add(CurrentUser);
         }
+        public void CreateNewRecruter(string name, string surname, DateTime? birthDate, string company, string username, string password)
+        {
+            CurrentHR = new Recruter
+            {
+                Name = name,
+                Surname = surname,
+                BirthDate = (DateTime)birthDate,
+                Company = company,
+                Username = username,
+                Password = password
+            };
+            Recruters.Add(CurrentHR);
+        }
         public void SaveConfig()
         {
             LocalFiles.SaveUserConfig("users.json", Users);
+            LocalFiles.SaveHRConfig("recruters.json", Recruters);
+        }
+        public bool AuthorizeUser(string login, string password)
+        {
+            CurrentUser = Users.FirstOrDefault(user => user.Username == login && user.Password == password);
+            return CurrentUser != null;
+        }
+        public bool AuthorizeHR(string login, string password)
+        {
+            CurrentHR = Recruters.FirstOrDefault(hr => hr.Username == login && hr.Password == password);
+            return CurrentHR != null;
         }
     }
 }

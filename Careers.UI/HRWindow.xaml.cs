@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Careers.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,10 +18,17 @@ namespace Careers.UI {
     /// Логика взаимодействия для HRWindow.xaml
     /// </summary>
     public partial class HRWindow : Window {
+        private Repository repo;
         public HRWindow()
         {
             InitializeComponent();
             addNewVacancy.Click += AddNewVacancy_Click;
+        }
+
+        public HRWindow(Repository repo)
+        {
+            InitializeComponent();
+            this.repo = repo;
         }
 
         private void AddNewVacancy_Click(object sender, RoutedEventArgs e)

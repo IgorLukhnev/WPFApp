@@ -15,11 +15,13 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Column="0" Grid.Row="0" Text="Логин:"/>
         <TextBox x:Name="userLogin" Grid.Column="1" Grid.Row="0" MinWidth="250" Width="Auto"/>
         <TextBlock Grid.Column="0" Grid.Row="1" Text="Пароль:"/>
         <PasswordBox x:Name="userPass" Grid.Column="1" Grid.Row="1" MinWidth="250" Width="Auto"/>
         <Button x:Name="buttonLogin" Content="Войти" Grid.ColumnSpan="2" Grid.Row="2" HorizontalAlignment="Center"/>
+        <TextBlock x:Name="textIncorrectData" FontStyle="Oblique" Foreground="Red" Grid.Row="3" Grid.ColumnSpan="3" HorizontalAlignment="Center"/>
     </Grid>
 </Window>

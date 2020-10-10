@@ -29,7 +29,23 @@ namespace Careers.UI {
             this.repo = repo;
             InitializeComponent();
             buttonRegistration.Click += ButtonRegistration_Click;
-            userUniversity.ItemsSource = LocalFiles.LoadUniversities();
+            userUniversity.ItemsSource = repo.Universities;
+            buttonEmployerRegistration.Click += ButtonEmployerRegistration_Click;
+        }
+
+        private void ButtonEmployerRegistration_Click(object sender, RoutedEventArgs e)
+        {
+            var name = employerName.Text;
+            var surname = employerSurname.Text;
+            var username = employerNickname.Text;
+            var password = employerPassword.Password;
+            var company = employerCompany.Text;
+            var birthDate = employerBirthDate.SelectedDate;
+            repo.CreateNewRecruter(name, surname, birthDate, company, username, password);
+            repo.SaveConfig();
+            var recruterWindow = new HRWindow(repo);
+            recruterWindow.Show();
+            this.Close();
         }
 
         private void ButtonRegistration_Click(object sender, RoutedEventArgs e)
@@ -51,13 +67,13 @@ namespace Careers.UI {
             var endExp = userEndWorkExp.SelectedDate;
             var company = userCompanyExp.Text;
             var description = userDescriptionExp.Text;
-            repo.CreateNewUser(name, surname, email, birthDate, nickname, password, university, degree,
-                specialization, graduateDate, softSkills, hardSkills, startExp, endExp, company, description);
-            Console.WriteLine(repo.CurrentUser.Username);
-            repo.SaveConfig();
-            var userWindow = new FirstUserWindow(repo);
-            userWindow.Show();
-            this.Close();
+            //repo.CreateNewUser(name, surname, email, birthDate, nickname, password, university, degree,
+            //    specialization, graduateDate, softSkills, hardSkills, startExp, endExp, company, description);
+            //Console.WriteLine(repo.CurrentUser.Username);
+            //repo.SaveConfig();
+            //var userWindow = new FirstUserWindow(repo);
+            //userWindow.Show();
+            //this.Close();
         }
     }
 }
