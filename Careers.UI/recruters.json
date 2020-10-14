@@ -1,0 +1,139 @@
+[
+  {
+    "Id": 1,
+    "Name": "Игорь",
+    "Surname": "Лухнев",
+    "Company": "Тинькофф",
+    "BirthDate": "2002-01-17T00:00:00",
+    "Username": "Admin",
+    "Password": "Admin",
+    "Vacancies": [
+      {
+        "Id": 1,
+        "Title": "Тест",
+        "Description": "тестовая вакансия",
+        "Salary": 36000.0,
+        "Applies": [
+          {
+            "Id": 1,
+            "CreatedDt": "2020-10-14T03:39:01.5706074+03:00",
+            "UserId": 1,
+            "VacancyId": 1,
+            "Status": 2
+          },
+          {
+            "Id": 3,
+            "CreatedDt": "2020-10-14T11:29:49.1289799+03:00",
+            "UserId": 1,
+            "VacancyId": 1,
+            "Status": 0
+          },
+          {
+            "Id": 5,
+            "CreatedDt": "2020-10-14T11:31:51.6422659+03:00",
+            "UserId": 1,
+            "VacancyId": 1,
+            "Status": 0
+          }
+        ],
+        "RecId": 1
+      },
+      {
+        "Id": 2,
+        "Title": "Аналитик",
+        "Description": "аналитик, знание SQL, опыт работы 1,5 года, знание английского",
+        "Salary": 120000.0,
+        "Applies": [
+          {
+            "Id": 7,
+            "CreatedDt": "2020-10-14T17:37:00.8044976+03:00",
+            "UserId": 1,
+            "VacancyId": 2,
+            "Status": 2
+          },
+          {
+            "Id": 9,
+            "CreatedDt": "2020-10-14T20:03:17.4846945+03:00",
+            "UserId": 1,
+            "VacancyId": 2,
+            "Status": 0
+          }
+        ],
+        "RecId": 1
+      },
+      {
+        "Id": 3,
+        "Title": "Test",
+        "Description": "тестик",
+        "Salary": 32000.0,
+        "Applies": [
+          {
+            "Id": 11,
+            "CreatedDt": "2020-10-14T20:42:05.3133865+03:00",
+            "UserId": 1,
+            "VacancyId": 3,
+            "Status": 0
+          }
+        ],
+        "RecId": 1
+      }
+    ]
+  },
+  {
+    "Id": 2,
+    "Name": "Дмитрий",
+    "Surname": "Зубов",
+    "Company": "Яндекс",
+    "BirthDate": "2000-12-25T00:00:00",
+    "Username": "z.d.s.vl",
+    "Password": "123",
+    "Vacancies": [
+      {
+        "Id": 4,
+        "Title": "Data Scientist",
+        "Description": "Нужно знать все",
+        "Salary": 200000.0,
+        "Applies": [
+          {
+            "Id": 13,
+            "CreatedDt": "2020-10-14T20:50:30.8197449+03:00",
+            "UserId": 1,
+            "VacancyId": 4,
+            "Status": 0
+          },
+          {
+            "Id": 13,
+            "CreatedDt": "2020-10-14T20:50:30.8197449+03:00",
+            "UserId": 1,
+            "VacancyId": 4,
+            "Status": 0
+          }
+        ],
+        "RecId": 2
+      },
+      {
+        "Id": 5,
+        "Title": "Developer",
+        "Description": "C# and Python",
+        "Salary": 140000.0,
+        "Applies": [
+          {
+            "Id": 14,
+            "CreatedDt": "2020-10-14T20:50:42.3310172+03:00",
+            "UserId": 1,
+            "VacancyId": 5,
+            "Status": 0
+          },
+          {
+            "Id": 14,
+            "CreatedDt": "2020-10-14T20:50:42.3310172+03:00",
+            "UserId": 1,
+            "VacancyId": 5,
+            "Status": 0
+          }
+        ],
+        "RecId": 2
+      }
+    ]
+  }
+]

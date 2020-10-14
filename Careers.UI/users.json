@@ -1,0 +1,99 @@
+[
+  {
+    "Id": 1,
+    "Name": "Игорь",
+    "Surname": "Лухнев",
+    "Email": "idlukhnev@edu.hse.ru",
+    "BirthDate": "2002-01-17T00:00:00",
+    "Username": "admin",
+    "Password": "admin",
+    "SoftSkills": "Лидерство, коммуникабельность, работа в команде",
+    "HardSkills": "Python, C#, SQL",
+    "Educations": [
+      {
+        "University": "Higher School of Economics",
+        "Degree": 0,
+        "Program": "Бизнес-Информатика",
+        "GraduateDate": "2023-08-31T00:00:00"
+      },
+      {
+        "University": "Harvard University",
+        "Degree": 4,
+        "Program": "Economics",
+        "GraduateDate": "2030-08-31T00:00:00"
+      }
+    ],
+    "WorkExperiences": [
+      {
+        "Company": "",
+        "StartDate": "2020-10-14T03:05:14.2712551+03:00",
+        "EndDate": null,
+        "Description": ""
+      },
+      {
+        "Company": "Bankex",
+        "StartDate": "2018-04-01T00:00:00",
+        "EndDate": "2018-07-01T00:00:00",
+        "Description": "Student assistant"
+      }
+    ],
+    "Applies": [
+      {
+        "Id": 1,
+        "CreatedDt": "2020-10-14T03:39:01.5706074+03:00",
+        "UserId": 1,
+        "VacancyId": 1,
+        "Status": 2
+      },
+      {
+        "Id": 3,
+        "CreatedDt": "2020-10-14T11:29:49.1289799+03:00",
+        "UserId": 1,
+        "VacancyId": 1,
+        "Status": 0
+      },
+      {
+        "Id": 5,
+        "CreatedDt": "2020-10-14T11:31:51.6422659+03:00",
+        "UserId": 1,
+        "VacancyId": 1,
+        "Status": 0
+      },
+      {
+        "Id": 7,
+        "CreatedDt": "2020-10-14T17:37:00.8044976+03:00",
+        "UserId": 1,
+        "VacancyId": 2,
+        "Status": 2
+      },
+      {
+        "Id": 9,
+        "CreatedDt": "2020-10-14T20:03:17.4846945+03:00",
+        "UserId": 1,
+        "VacancyId": 2,
+        "Status": 0
+      },
+      {
+        "Id": 11,
+        "CreatedDt": "2020-10-14T20:42:05.3133865+03:00",
+        "UserId": 1,
+        "VacancyId": 3,
+        "Status": 0
+      },
+      {
+        "Id": 13,
+        "CreatedDt": "2020-10-14T20:50:30.8197449+03:00",
+        "UserId": 1,
+        "VacancyId": 4,
+        "Status": 0
+      },
+      {
+        "Id": 14,
+        "CreatedDt": "2020-10-14T20:50:42.3310172+03:00",
+        "UserId": 1,
+        "VacancyId": 5,
+        "Status": 0
+      }
+    ]
+  }
+]
