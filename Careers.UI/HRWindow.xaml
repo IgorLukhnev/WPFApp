@@ -14,25 +14,26 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <TextBlock x:Name="textBlockGreetingHR" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" FontSize="18"/>
-        <CheckBox x:Name="checkBoxAppliedVacancies" Content="Показать вакансии с откликами" Grid.Column="1" Grid.Row="0"/>
+        <CheckBox x:Name="checkBoxAppliedVacancies" Content="Показать вакансии с откликами" Grid.Column="1" Grid.Row="0" Checked="checkBoxAppliedVacancies_Checked" Unchecked="checkBoxAppliedVacancies_Unchecked"/>
         <ListBox Grid.Row="1" Grid.Column="0" x:Name="listBoxVacancies">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition MinWidth="200"/>
+                            <ColumnDefinition MinWidth="200"/>
+                            <ColumnDefinition MinWidth="200"/>
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0">
                             <TextBlock Text="{Binding Title}" FontSize="18" FontWeight="Black"/>
-                            <TextBlock Text="{Binding Company}" FontSize="12" FontWeight="Light"/>
+                            <TextBlock Text="{Binding Recruter.Company}" FontSize="12" FontWeight="Light"/>
                             <TextBlock Text="{Binding Description}" FontSize="14"/>
                         </StackPanel>
                         <TextBlock Text="{Binding Salary}" Grid.Column="1"/>
-                        <Button x:Name="showApplies" Content="Посмотреть отклики" Grid.Column="2" Click="showApplies_Click"/>
+                        <Button x:Name="showApplies" Grid.Column="2" Content="Посмотреть отклики" Click="showApplies_Click"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
@@ -40,5 +41,6 @@
         <StackPanel Grid.Column="1" Grid.Row="1" MinWidth="100" MaxWidth="150" MinHeight="35" MaxHeight="50">
             <Button x:Name="addNewVacancy" Content="Добавить вакансию"/>
         </StackPanel>
+        <TextBlock x:Name="nothingClicked" FontStyle="Oblique" Foreground="Red" Grid.Row="2" Grid.ColumnSpan="3" HorizontalAlignment="Center"/>
     </Grid>
 </Window>

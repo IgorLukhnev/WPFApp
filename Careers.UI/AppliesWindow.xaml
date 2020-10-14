@@ -11,6 +11,10 @@
             <ColumnDefinition Width="4*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
         <StackPanel Grid.Column="0">
             <TextBlock x:Name="titleForAppliesList"/>
             <ScrollViewer VerticalScrollBarVisibility="Auto">
@@ -32,15 +36,15 @@
                                 <TextBlock Text="{Binding User.Surname}" Grid.Column="2"/>
                                 <TextBlock Text="{Binding User.Email}" Grid.Column="3"/>
                                 <StackPanel Grid.Column="4">
-                                    <TextBlock Text="{Binding User.Education.Degree}"/>
-                                    <TextBlock Text="{Binding User.Education.University}"/>
-                                    <TextBlock Text="{Binding User.Education.GraduateDate}"/>
-                                    <TextBlock Text="{Binding User.Education.Specialization}"/>
+                                    <TextBlock Text="{Binding User.Educations[0].Degree}"/>
+                                    <TextBlock Text="{Binding User.Educations[0].University}"/>
+                                    <TextBlock Text="{Binding User.Educations[0].GraduateDate}"/>
+                                    <TextBlock Text="{Binding User.Educations[0].Specialization}"/>
                                 </StackPanel>
-                                <Button x:Name="viewExp" Content="Посмотреть опыт работы" Click="viewExp_Click"/>
-                                <StackPanel Grid.Column="5">
-                                    <Button x:Name="isConfirm" Content="Принять"/>
-                                    <Button x:Name="isDenied" Content="Отклонить"/>
+                                <Button x:Name="viewExp" Content="Посмотреть опыт работы" Click="viewExp_Click" Grid.Column="5"/>
+                                <StackPanel Grid.Column="6">
+                                    <Button x:Name="isConfirm" Content="Принять" Click="isConfirm_Click"/>
+                                    <Button x:Name="isDenied" Content="Отклонить" Click="isDenied_Click"/>
                                 </StackPanel>
                             </Grid>
                         </DataTemplate>
@@ -48,5 +52,7 @@
                 </ListBox>
             </ScrollViewer>
         </StackPanel>
+        <Button x:Name="returnBack" Grid.Column="1" Click="returnBack_Click" Content="Вернуться" MaxHeight="50" VerticalAlignment="Top"/>
+        <TextBlock x:Name="nothingClicked" FontStyle="Oblique" Foreground="Red" Grid.Row="1" Grid.ColumnSpan="3" HorizontalAlignment="Center"/>
     </Grid>
 </Window>

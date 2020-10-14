@@ -12,11 +12,12 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <TextBlock x:Name="textBlockGreeting" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" FontSize="18"/>
-        <CheckBox x:Name="checkBoxSpecializeVacancies" Content="Показать вакансии для меня" Grid.Column="1" Grid.Row="0"/>
+        <CheckBox x:Name="checkBoxSpecializeVacancies" Content="Показать вакансии для меня" Grid.Column="1" Grid.Row="0" Unchecked="checkBoxSpecializeVacancies_Unchecked"/>
         <ListBox Grid.Row="1" Grid.Column="0" x:Name="listBoxVacancies">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -28,11 +29,11 @@
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0">
                             <TextBlock Text="{Binding Title}" FontSize="18" FontWeight="Black"/>
-                            <TextBlock Text="{Binding Company}" FontSize="12" FontWeight="Light"/>
+                            <TextBlock Text="{Binding Recruter.Company}" FontSize="12" FontWeight="Light"/>
                             <TextBlock Text="{Binding Description}" FontSize="14"/>
                         </StackPanel>
                         <TextBlock Text="{Binding Salary}" Grid.Column="1"/>
-                        <Button x:Name="buttonApplyForJob" Content="Откликнуться" Grid.Column="2"/>
+                        <Button x:Name="buttonApplyForJob" Content="Откликнуться" Grid.Column="2" Click="Apply_Click"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
@@ -41,5 +42,6 @@
             <Button x:Name="userInfo" Content="Мой профиль"/>
             <Button x:Name="userApplies" Content="Мои отклики"/>
         </StackPanel>
+        <TextBlock x:Name="nothingClicked" FontStyle="Oblique" Foreground="Red" Grid.Row="2" Grid.ColumnSpan="3" HorizontalAlignment="Center"/>
     </Grid>
 </Window>

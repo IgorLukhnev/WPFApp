@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Careers.UI"
         mc:Ignorable="d"
-        MinHeight="280" MaxHeight="320"
+        MinHeight="330" MaxHeight="340"
         MinWidth="435" MaxWidth="445"
         Title="ExperienceEditor" Height="300" Width="440">
     <Grid>
@@ -14,6 +14,7 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -34,5 +35,6 @@
         <TextBlock Text="Подробности" Grid.Column="0" Grid.Row="3" Margin="5 5"/>
         <TextBox x:Name="userDescriptionExp" Grid.Column="1" Grid.Row="3" MinHeight="150" Margin="5 5"/>
         <Button x:Name="addExperience" Content="Сохранить" Grid.ColumnSpan="2" Grid.Row="4" Width="400"/>
+        <TextBlock x:Name="textIncorrectData" FontStyle="Oblique" Foreground="Red" Grid.Row="5" Grid.ColumnSpan="3" HorizontalAlignment="Center"/>
     </Grid>
 </Window>

@@ -8,5 +8,10 @@ namespace Careers.Core.Model {
         public DateTime StartDate { get; set; }
         public DateTime? EndDate { get; set; }
         public string Description { get; set; }
+
+        static public bool Validate(DateTime? startDate, string company, DateTime? endDate, string description)
+        {
+            return (startDate.HasValue && !string.IsNullOrEmpty(company) && !string.IsNullOrEmpty(description));
+        }
     }
 }

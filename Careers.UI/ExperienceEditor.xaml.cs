@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Careers.Core;
+using Careers.Core.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,15 +19,35 @@ namespace Careers.UI {
     /// Логика взаимодействия для ExperienceEditor.xaml
     /// </summary>
     public partial class ExperienceEditor : Window {
+        private Repository repo;
         public ExperienceEditor()
         {
             InitializeComponent();
+        }
+        public ExperienceEditor(Repository repo)
+        {
+            InitializeComponent();
+            this.repo = repo;
             addExperience.Click += AddExperience_Click;
         }
 
         private void AddExperience_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            var startExp = userStartWorkExp.SelectedDate;
+            var endExp = userEndWorkExp.SelectedDate;
+            var company = userCompanyExp.Text;
+            var description = userDescriptionExp.Text;
+            if (WorkExperience.Validate(startExp, company, endExp, description))
+            {
+                var experience = new WorkExperience { Company = company, Description = description, EndDate = endExp, StartDate = (DateTime)startExp };
+                repo.AddNewExperience(experience);
+                repo.SaveConfig();
+                this.Close();
+            }
+            else
+            {
+                textIncorrectData.Text = "Введены неправильные данные";
+            }
         }
     }
 }

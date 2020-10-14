@@ -42,7 +42,7 @@ namespace Careers.UI {
             }
             else if (repo.AuthorizeHR(login, password))
             {
-                var recruterWindow = new HRWindow();
+                var recruterWindow = new HRWindow(repo);
                 recruterWindow.Show();
                 this.Close();
             }

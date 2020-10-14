@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:Careers.UI"
         mc:Ignorable="d"
         MinWidth="200" MaxWidth="300"
-        MinHeight="130" MaxHeight="150"
-        Title="VacanciesEditor" Height="140" Width="250">
+        MinHeight="150" MaxHeight="250"
+        Title="VacanciesEditor" Height="200" Width="300">
     <Border Padding="5">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -15,6 +15,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -28,7 +29,8 @@
             <TextBox x:Name="descriptionOfVacancy" Grid.Column="1" Grid.Row="2"/>
             <TextBlock Text="Заработная плата" Grid.Column="0" Grid.Row="3"/>
             <TextBox x:Name="salaryOfVacancy" Grid.Column="1" Grid.Row="3"/>
-            <Button x:Name="addNewEducation" Content="Сохранить" Grid.ColumnSpan="2" Grid.Row="4"/>
+            <Button x:Name="addNewVacancy" Content="Сохранить" Grid.ColumnSpan="2" Grid.Row="4"/>
+            <TextBlock x:Name="incorectSalaryType" FontStyle="Oblique" Foreground="Red" Grid.Row="5" Grid.ColumnSpan="3" HorizontalAlignment="Center"/>
         </Grid>
     </Border>
 </Window>

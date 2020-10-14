@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Careers.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,9 +18,17 @@ namespace Careers.UI {
     /// Логика взаимодействия для ApplyUserExperience.xaml
     /// </summary>
     public partial class ApplyUserExperience : Window {
+        private Repository repo;
         public ApplyUserExperience()
         {
             InitializeComponent();
+        }
+        public ApplyUserExperience(Repository repo)
+        {
+            InitializeComponent();
+            this.repo = repo;
+            experienceOfUser.Text = $"Опыт работы пользователя {repo.CurrentApply.User.Name}";
+            ExperienceList.ItemsSource = repo.CurrentApply.User.WorkExperiences;
         }
     }
 }

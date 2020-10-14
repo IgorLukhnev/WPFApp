@@ -57,8 +57,12 @@ namespace Careers.UI {
             var nickname = userNickname.Text;
             var password = userPassword.Password;
             var prefered = userPreferedJob.SelectedItems;
-            var degree = (Degree)Enum.GetValues(typeof(Degree)).GetValue(userDegree.SelectedIndex);
-            var university = repo.Universities[userUniversity.SelectedIndex];
+            //var degree = (Degree)Enum.GetValues(typeof(Degree)).GetValue(userDegree.SelectedIndex);
+            //var university = (string)userUniversity.SelectedItem;
+            //var specialization = userSpecialization.Text;
+            //var graduateDate = userGraduateDate.SelectedDate;
+            var testDegree = userDegree.SelectedIndex;
+            var university = (string)userUniversity.SelectedItem;
             var specialization = userSpecialization.Text;
             var graduateDate = userGraduateDate.SelectedDate;
             var softSkills = userSoftSkills.Text;
@@ -67,13 +71,22 @@ namespace Careers.UI {
             var endExp = userEndWorkExp.SelectedDate;
             var company = userCompanyExp.Text;
             var description = userDescriptionExp.Text;
-            //repo.CreateNewUser(name, surname, email, birthDate, nickname, password, university, degree,
-            //    specialization, graduateDate, softSkills, hardSkills, startExp, endExp, company, description);
-            //Console.WriteLine(repo.CurrentUser.Username);
-            //repo.SaveConfig();
-            //var userWindow = new FirstUserWindow(repo);
-            //userWindow.Show();
-            //this.Close();
+            if (WorkExperience.Validate(startExp, company, endExp, description) && 
+                Education.Validate(university, testDegree, specialization, graduateDate))
+            {
+                var degree = (Degree)Enum.GetValues(typeof(Degree)).GetValue(userDegree.SelectedIndex);
+                repo.CreateNewUser(name, surname, email, birthDate, nickname, password, university, degree,
+                specialization, graduateDate, softSkills, hardSkills, startExp, endExp, company, description);
+                Console.WriteLine(repo.CurrentUser.Username);
+                repo.SaveConfig();
+                var userWindow = new FirstUserWindow(repo);
+                userWindow.Show();
+                this.Close();
+            }
+            else
+            {
+                textIncorrectData.Text = "Введены неправильные данные";
+            }
         }
     }
 }

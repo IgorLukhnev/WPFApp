@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Careers.Core.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,12 @@ namespace Careers.UI {
         public UserAppliesInfo()
         {
             InitializeComponent();
+        }
+
+        public UserAppliesInfo(User user)
+        {
+            InitializeComponent();
+            listBoxUserApplies.ItemsSource = user.Applies;
             backToUser.Click += BackToUser_Click;
         }
 

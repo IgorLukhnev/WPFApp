@@ -30,18 +30,18 @@
                 <TextBlock Text="Описание" HorizontalAlignment="Center" Grid.Column="2"/>
                 <TextBlock Text="Статус" HorizontalAlignment="Center" Grid.Column="3"/>
             </Grid>
-            <ListBox Grid.ColumnSpan="2" Grid.Row="2">
+            <ListBox x:Name="listBoxUserApplies" Grid.ColumnSpan="2" Grid.Row="2" FlowDirection="LeftToRight">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="3*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="{Binding Vacancy.Title}" Grid.Column="0"/>
-                            <TextBlock Text="{Binding Vacancy.Company}" Grid.Column="1"/>
+                            <TextBlock Text="{Binding Vacancy.Recruter.Company}" Grid.Column="1"/>
                             <TextBlock Text="{Binding Vacancy.Description}" Grid.Column="2"/>
                             <TextBlock Text="{Binding Status}" Grid.Column="3"/>
                         </Grid>
