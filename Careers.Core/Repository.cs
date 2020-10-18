@@ -10,6 +10,7 @@ using System.Text;
 namespace Careers.Core {
     public class Repository {
         public event Action OnVacanciesChanged;
+        public event Action OnAppliesChanged;
         public event Action OnExperienceChanged;
         public event Action OnEducationChanged;
         public User CurrentUser { get; set; }
@@ -21,6 +22,7 @@ namespace Careers.Core {
         public Recruter CurrentHR { get; set; }
         public Vacancy CurrentVacancy { get; set; }
         public Apply CurrentApply { get; set; }
+        public WorkExperience CurrentExperience { get; set; }
 
         public Repository()
         {
@@ -30,12 +32,18 @@ namespace Careers.Core {
             //Vacancies = LocalFiles.LoadList<Vacancy>("vacancies.json");
             LoadVacancies();
             LoadApplies();
+            Recover();
             //foreach (var user in Users)
             //    user.ApplyIds.Clear();
             //foreach (var rec in Recruters)
             //    rec.VacIds.Clear();
             //foreach (var vac in Vacancies)
             //    vac.applyIds.Clear();
+        }
+
+        public bool IsLoginFree(string username)
+        {
+            return Users.Select(u => u.Username).Contains(username) || Recruters.Select(u => u.Username).Contains(username);
         }
 
         private void LoadApplies()
@@ -74,6 +82,16 @@ namespace Careers.Core {
             OnExperienceChanged?.Invoke();
         }
 
+        public void UpdateExperience(DateTime startExp, string company, DateTime? endExp, string description)
+        {
+            var exp = Users.FirstOrDefault(u => u == CurrentUser).WorkExperiences.FirstOrDefault(ex => ex == CurrentExperience);
+            exp.Company = company;
+            exp.StartDate = startExp;
+            exp.EndDate = endExp;
+            exp.Description = description;
+            OnExperienceChanged?.Invoke();
+        }
+
         private void LoadVacancies()
         {
             Vacancies = new List<Vacancy>();
@@ -81,6 +99,20 @@ namespace Careers.Core {
             {
                 Vacancies.AddRange(user.Vacancies);
             }
+        }
+
+        public void DeleteVacancy(Vacancy vacancy)
+        {
+            foreach (var apply in vacancy.Applies)
+            {
+                Users.FirstOrDefault(u=>u.Id==apply.UserId).Applies.Remove(apply);
+                Applies.Remove(apply);
+            }
+            Vacancies.Remove(vacancy);
+            Recruters.FirstOrDefault(r=>r==CurrentHR).Vacancies.Remove(vacancy);
+            OnAppliesChanged?.Invoke();
+            OnVacanciesChanged?.Invoke();
+            SaveConfig();
         }
 
         public void Recover()

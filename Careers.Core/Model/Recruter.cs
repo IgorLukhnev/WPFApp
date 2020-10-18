@@ -28,6 +28,11 @@ namespace Careers.Core.Model {
             Username = username;
             Password = password;
         }
+        static public bool Validate(string name, string surname, string company, DateTime? birthDate, string username)
+        {
+            return !string.IsNullOrEmpty(name) & !string.IsNullOrEmpty(surname) & birthDate.HasValue &
+                !string.IsNullOrEmpty(company) & !string.IsNullOrEmpty(username);
+        }
 
         //public void ToSave()
         //{

@@ -19,7 +19,7 @@ namespace Careers.UI {
     /// Логика взаимодействия для ExperienceEditor.xaml
     /// </summary>
     public partial class ExperienceEditor : Window {
-        private Repository repo;
+        private readonly Repository repo;
         public ExperienceEditor()
         {
             InitializeComponent();
@@ -28,6 +28,13 @@ namespace Careers.UI {
         {
             InitializeComponent();
             this.repo = repo;
+            if (repo.CurrentExperience != null)
+            {
+                userStartWorkExp.SelectedDate = repo.CurrentExperience.StartDate;
+                if (repo.CurrentExperience.EndDate.HasValue) userEndWorkExp.SelectedDate = repo.CurrentExperience.EndDate;
+                if (!string.IsNullOrEmpty(repo.CurrentExperience.Company)) userCompanyExp.Text = repo.CurrentExperience.Company;
+                if (!string.IsNullOrEmpty(repo.CurrentExperience.Description)) userDescriptionExp.Text = repo.CurrentExperience.Description;            
+                        }
             addExperience.Click += AddExperience_Click;
         }
 
@@ -39,8 +46,16 @@ namespace Careers.UI {
             var description = userDescriptionExp.Text;
             if (WorkExperience.Validate(startExp, company, endExp, description))
             {
-                var experience = new WorkExperience { Company = company, Description = description, EndDate = endExp, StartDate = (DateTime)startExp };
-                repo.AddNewExperience(experience);
+                if (repo.CurrentExperience == null)
+                {
+                    var experience = new WorkExperience { Company = company, Description = description, EndDate = endExp, StartDate = (DateTime)startExp };
+                    repo.AddNewExperience(experience);
+                }
+                else
+                {
+                    repo.UpdateExperience((DateTime)startExp, company, endExp, description);
+                    repo.CurrentExperience = null;
+                } 
                 repo.SaveConfig();
                 this.Close();
             }

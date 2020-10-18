@@ -5,54 +5,56 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Careers.UI"
         mc:Ignorable="d"
-        Title="AppliesWindow" Height="450" Width="800">
+        Title="Отклики на вакансию" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="4*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Column="0">
-            <TextBlock x:Name="titleForAppliesList"/>
-            <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <TextBlock x:Name="titleForAppliesList" FontSize="18" FontWeight="Regular" Grid.Row="0"/>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1">
                 <ListBox x:Name="AppliesList" >
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Text="{Binding CreatedDt}" Grid.Column="0"/>
-                                <TextBlock Text="{Binding User.Name}" Grid.Column="1"/>
-                                <TextBlock Text="{Binding User.Surname}" Grid.Column="2"/>
-                                <TextBlock Text="{Binding User.Email}" Grid.Column="3"/>
-                                <StackPanel Grid.Column="4">
-                                    <TextBlock Text="{Binding User.Educations[0].Degree}"/>
-                                    <TextBlock Text="{Binding User.Educations[0].University}"/>
-                                    <TextBlock Text="{Binding User.Educations[0].GraduateDate}"/>
-                                    <TextBlock Text="{Binding User.Educations[0].Specialization}"/>
-                                </StackPanel>
-                                <Button x:Name="viewExp" Content="Посмотреть опыт работы" Click="viewExp_Click" Grid.Column="5"/>
-                                <StackPanel Grid.Column="6">
-                                    <Button x:Name="isConfirm" Content="Принять" Click="isConfirm_Click"/>
-                                    <Button x:Name="isDenied" Content="Отклонить" Click="isDenied_Click"/>
-                                </StackPanel>
-                            </Grid>
-                        </DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80"/>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="125"/>
+                                <ColumnDefinition Width="125"/>
+                                <ColumnDefinition Width="110"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding CreatedDt}" Grid.Column="0" Width="80" Margin="0 0 5 0" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding User.Name}" Grid.Column="1" Width="80" Margin="0 0 5 0" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding User.Surname}" Grid.Column="2" Width="80" Margin="0 0 5 0" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding User.Email}" Grid.Column="3" Width="125" Margin="0 0 5 0" TextWrapping="Wrap"/>
+                            <StackPanel Grid.Column="4" Width="125" Margin="0 0 5 0">
+                                <TextBlock Text="{Binding User.Educations[0].Degree}" FontSize="12" FontStyle="Italic" HorizontalAlignment="Center" Width="125" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding User.Educations[0].University}" Width="125" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding User.Educations[0].GraduateDate, StringFormat=d}" HorizontalAlignment="Center" Width="125" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding User.Educations[0].Program}" Width="125" TextWrapping="Wrap"/>
+                            </StackPanel>
+                            <Button x:Name="viewExp" Height="50" Margin="0 0 5 0" Click="ViewExp_Click" Grid.Column="5" Width="100">
+                                <Button.Content>
+                                    <TextBlock Text="Посмотреть опыт работы" TextWrapping="Wrap"/>
+                                </Button.Content>
+                            </Button>
+                            <StackPanel Grid.Column="6" VerticalAlignment="Center">
+                                <Button x:Name="isConfirm" Content="Принять" Click="IsConfirm_Click"/>
+                                <Button x:Name="isDenied" Content="Отклонить" Click="IsDenied_Click"/>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
             </ScrollViewer>
-        </StackPanel>
-        <Button x:Name="returnBack" Grid.Column="1" Click="returnBack_Click" Content="Вернуться" MaxHeight="50" VerticalAlignment="Top"/>
-        <TextBlock x:Name="nothingClicked" FontStyle="Oblique" Foreground="Red" Grid.Row="1" Grid.ColumnSpan="3" HorizontalAlignment="Center"/>
+            <Button x:Name="returnBack" Grid.Column="1" Click="ReturnBack_Click" Content="Вернуться" MaxHeight="50" VerticalAlignment="Top"/>
+        <TextBlock x:Name="nothingClicked" FontStyle="Oblique" Foreground="Red" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" TextWrapping="Wrap"/>
     </Grid>
 </Window>

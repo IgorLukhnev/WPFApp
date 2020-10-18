@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Careers.UI"
         mc:Ignorable="d"
-        Title="ApplyUserExperience" Height="450" Width="800">
+        Title="Опыт соискателя" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -16,19 +16,17 @@
             <ListBox x:Name="ExperienceList" >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Grid>
+                        <Grid Margin="0 5">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="95"/>
+                                <ColumnDefinition Width="95"/>
+                                <ColumnDefinition Width="95"/>
+                                <ColumnDefinition Width="495"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="{Binding Company}" Grid.Column="0"/>
-                            <TextBlock Text="{Binding StartDt}" Grid.Column="1"/>
-                            <TextBlock Text="{Binding EndDt}" Grid.Column="2"/>
-                            <TextBlock Text="{Binding Description}" Grid.Column="2"/>
+                            <TextBlock Text="{Binding Company}" Grid.Column="0" Width="190" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding StartDate, StringFormat=d}" Grid.Column="1" Width="190" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding EndDate, StringFormat=d}" Grid.Column="2" Width="190" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding Description}" Grid.Column="3" Width="190" TextWrapping="Wrap"/>
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

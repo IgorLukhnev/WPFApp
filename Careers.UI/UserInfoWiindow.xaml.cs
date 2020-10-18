@@ -1,4 +1,5 @@
 ﻿using Careers.Core;
+using Careers.Core.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace Careers.UI {
     /// Логика взаимодействия для UserInfoWiindow.xaml
     /// </summary>
     public partial class UserInfoWiindow : Window {
-        private Repository repo;
+        private readonly Repository repo;
         public UserInfoWiindow()
         {
             InitializeComponent();
@@ -30,11 +31,24 @@ namespace Careers.UI {
             InitializeComponent();
             listBoxExp.ItemsSource = repo.CurrentUser.WorkExperiences;
             listBoxEdu.ItemsSource = repo.CurrentUser.Educations;
-            editEduc.Click += editEduc_Click;
+            editEduc.Click += EditEduc_Click;
+            addWorkExp.Click += AddWorkExp_Click;
             editWorkExp.Click += EditWorkExp_Click;
         }
 
         private void EditWorkExp_Click(object sender, RoutedEventArgs e)
+        {
+            var chosen = (WorkExperience)listBoxExp.SelectedItem;
+            if (chosen != null)
+            {
+                repo.CurrentExperience = chosen;
+                var experienceEdit = new ExperienceEditor(repo);
+                repo.OnExperienceChanged += Repo_OnExperienceChanged;
+                experienceEdit.Show();
+            }
+        }
+
+        private void AddWorkExp_Click(object sender, RoutedEventArgs e)
         {
             var experienceEdit = new ExperienceEditor(repo);
             repo.OnExperienceChanged += Repo_OnExperienceChanged;
@@ -47,7 +61,7 @@ namespace Careers.UI {
             listBoxExp.ItemsSource = repo.CurrentUser.WorkExperiences;
         }
 
-        private void editEduc_Click(object sender, RoutedEventArgs e)
+        private void EditEduc_Click(object sender, RoutedEventArgs e)
         {
             var educationEdit = new EducationEditor(repo);
             repo.OnEducationChanged += Repo_OnEducationChanged;

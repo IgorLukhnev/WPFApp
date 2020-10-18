@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:Careers.UI"
         mc:Ignorable="d"
         MinHeight="150" MaxHeight="200"
-        MinWidth="225" MaxWidth="250"
-        Title="Добавить образование" Height="150" Width="225">
+        MinWidth="225" MaxWidth="300"
+        Title="Редактор образования" Height="180" Width="250">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -32,7 +32,7 @@
         <TextBlock Text="ВУЗ" Grid.Column="0" Grid.Row="1"/>
         <ComboBox Name="userUniversity" Grid.Column="1" Grid.Row="1" IsEditable="True"/>
         <TextBlock Text="Специальность" Grid.Column="0" Grid.Row="2"/>
-        <TextBox Name="userSpecialization" Grid.Column="1" Grid.Row="2" />
+        <TextBox Name="userSpecialization" Grid.Column="1" Grid.Row="2" Width="100" TextWrapping="Wrap"/>
         <TextBlock Text="Дата выпуска" Grid.Column="0" Grid.Row="3"/>
         <DatePicker Name="userGraduateDate" Grid.Row="3" Grid.Column="1"/>
         <Button x:Name="addNewEducation" Content="Сохранить" Grid.ColumnSpan="2" Grid.Row="4"/>

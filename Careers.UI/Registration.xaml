@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Careers.UI"
         mc:Ignorable="d"
-        Title="Registration" Height="800" Width="800">
+        Title="Registration" Height="800" Width="470">
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <Border HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10" Background="#eee">
             <TabControl>
@@ -43,14 +43,14 @@
                         </Grid.RowDefinitions>
                         <!-- Personal info -->
                         <TextBlock Text="Личные данные" Grid.ColumnSpan="2" Grid.Row="0" FontSize="20" HorizontalAlignment="Center"/>
-                        <TextBlock Text="Имя" Grid.Column="0" Grid.Row="1" />
+                        <TextBlock Text="Имя" Grid.Column="0" Grid.Row="1" Margin="0 0 3 0"/>
                         <TextBox x:Name="userName" Grid.Column="1" Grid.Row="1"/>
-                        <TextBlock Text="Фамилия" Grid.Column="0" Grid.Row="2"/>
+                        <TextBlock Text="Фамилия" Grid.Column="0" Grid.Row="2" Margin="0 0 3 0"/>
                         <TextBox x:Name="userSurname" Grid.Column="1" Grid.Row="2"/>
                         <TextBlock Text="Дата рождения" Grid.Column="0" Grid.Row="3"/>
                         <DatePicker x:Name="userBirthdate" Grid.Row="3" Grid.Column="1"/>
                         <TextBlock Text="Электронная почта" Grid.Column="0" Grid.Row="4"/>
-                        <TextBox x:Name="userEmail" Grid.Column="1" Grid.Row="4"/>
+                        <TextBox x:Name="userEmail" Grid.Column="1" Grid.Row="4" />
                         <TextBlock Text="Имя пользователя" Grid.Column="0" Grid.Row="5"/>
                         <TextBox x:Name="userNickname" Grid.Column="1" Grid.Row="5"/>
                         <TextBlock Text="Пароль" Grid.Column="0" Grid.Row="6"/>
@@ -65,7 +65,7 @@
                         <!-- Education -->
                         <TextBlock Text="Образование" Grid.ColumnSpan="2" Grid.Row="8" FontSize="20" HorizontalAlignment="Center"/>
                         <TextBlock Text="Степень образования" Grid.Column="0" Grid.Row="9"/>
-                        <ComboBox x:Name="userDegree" Grid.Column="1" Grid.Row="9" IsEditable="True">
+                        <ComboBox x:Name="userDegree" Grid.Column="1" Grid.Row="9">
                             <TextBlock Text="Бакалавр"/>
                             <TextBlock Text="Магистр"/>
                             <TextBlock Text="Специалист"/>
@@ -74,32 +74,32 @@
                         </ComboBox>
                         <TextBlock Text="ВУЗ" Grid.Column="0" Grid.Row="10"/>
 						<ComboBox Name="userUniversity" Grid.Column="1" Grid.Row="10" IsEditable="True" IsReadOnly="False"/>
-                        <TextBlock Text="Специальность" Grid.Column="0" Grid.Row="11"/>
-                        <TextBox Name="userSpecialization" Grid.Column="1" Grid.Row="11"/>
+                        <TextBlock Text="Специальность" Grid.Column="0" Grid.Row="11" />
+                        <TextBox Name="userSpecialization" Width="195" Grid.Column="1" Grid.Row="11" TextWrapping="Wrap"/>
                         <TextBlock Text="Дата выпуска" Grid.Column="0" Grid.Row="12"/>
                         <DatePicker Name="userGraduateDate" Grid.Row="12" Grid.Column="1"/>
                         <!-- Skills -->
                         <TextBlock Text="Навыки" Grid.ColumnSpan="2" Grid.Row="13" FontSize="20" HorizontalAlignment="Center"/>
                         <TextBlock Text="Soft Skills" Grid.Column="0" Grid.Row="14" MaxWidth="200"/>
-                        <TextBox x:Name="userSoftSkills" Grid.Column="0" Grid.Row="15" MinHeight="50" MinWidth="150"/>
+                        <TextBox x:Name="userSoftSkills" Grid.Column="0" Grid.Row="15" Width="185" MinHeight="50" TextWrapping="Wrap"/>
                         <TextBlock Text="Hard Skills" Grid.Column="1" Grid.Row="14" MaxWidth="200" TextTrimming="CharacterEllipsis"/>
-                        <TextBox x:Name="userHardSkills" Grid.Column="1" Grid.Row="15" MinHeight="50" MinWidth="150"/>
+                        <TextBox x:Name="userHardSkills" Grid.Column="1" Grid.Row="15" Width="185" MinHeight="50" TextWrapping="Wrap"/>
                         <!-- Working experience -->
                         <TextBlock Text="Опыт работы" Grid.ColumnSpan="2" Grid.Row="16" FontSize="20" HorizontalAlignment="Center"/>
                         <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="17">
-                            <TextBlock Text="Начало работы"/>
-                            <DatePicker Name="userStartWorkExp" />
+                            <TextBlock Text="Начало работы"  Margin="0 0 3 0"/>
+                            <DatePicker Name="userStartWorkExp"  Margin="0 0 3 0"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="17">
-                            <TextBlock Text="Окончание работы"/>
+                            <TextBlock Text="Окончание работы"  Margin="0 0 3 0"/>
                             <DatePicker Name="userEndWorkExp" />
                         </StackPanel>
                         <TextBlock Text="Компания" Grid.Column="0" Grid.Row="18"/>
                         <TextBox x:Name="userCompanyExp" Grid.Column="1" Grid.Row="18"/>
                         <TextBlock Text="Подробности" Grid.Column="0" Grid.Row="19"/>
-                        <TextBox x:Name="userDescriptionExp" Grid.Column="1" Grid.Row="19" MinHeight="150"/>
+                        <TextBox x:Name="userDescriptionExp" Grid.Column="1" Grid.Row="19" MinHeight="150" Width="195" TextWrapping="Wrap"/>
                         <Button x:Name="buttonRegistration" Content="Регистрация" HorizontalAlignment="Center" Grid.ColumnSpan="2" Grid.Row="20"/>
-						<TextBlock x:Name="textIncorrectData" FontStyle="Oblique" Foreground="Red" Grid.Row="20" Grid.ColumnSpan="3" HorizontalAlignment="Center"/>
+						<TextBlock x:Name="textIncorrectData" FontStyle="Oblique" Foreground="Red" Grid.Row="21" Grid.ColumnSpan="3" HorizontalAlignment="Center"/>
                     </Grid>
                 </TabItem>
                 <TabItem Header="Работодатель">
@@ -117,6 +117,7 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
+						    <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <!-- Personal info -->
                         <TextBlock Text="Личные данные" Grid.ColumnSpan="2" Grid.Row="0" FontSize="20" HorizontalAlignment="Center"/>
@@ -133,6 +134,7 @@
                         <TextBlock Text="Пароль" Grid.Column="0" Grid.Row="6" />
                         <PasswordBox x:Name="employerPassword" Grid.Column="2" Grid.Row="6"/>
                         <Button x:Name="buttonEmployerRegistration" Content="Регистрация" HorizontalAlignment="Center" Grid.ColumnSpan="2" Grid.Row="7"/>
+				        <TextBlock x:Name="textIncorrect" FontStyle="Oblique" Foreground="Red" Grid.Row="8" Grid.ColumnSpan="3" HorizontalAlignment="Center"/>
 				    </Grid>
                 </TabItem>
             </TabControl>

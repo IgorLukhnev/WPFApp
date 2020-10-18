@@ -18,7 +18,7 @@ namespace Careers.UI {
     /// Логика взаимодействия для Login.xaml
     /// </summary>
     public partial class Login : Window {
-        private Repository repo;
+        private readonly Repository repo;
         public Login()
         {
             InitializeComponent();

@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Careers.UI"
         mc:Ignorable="d"
-        MinHeight="330" MaxHeight="340"
-        MinWidth="435" MaxWidth="445"
-        Title="ExperienceEditor" Height="300" Width="440">
+        MinHeight="330" MaxHeight="400"
+        MinWidth="435" MaxWidth="500"
+        Title="Редактор опыта" Height="350" Width="500">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -33,7 +33,7 @@
         <TextBlock Text="Компания" Grid.Column="0" Grid.Row="2" Margin="5 5"/>
         <TextBox x:Name="userCompanyExp" Grid.Column="1" Grid.Row="2" Margin="5 5"/>
         <TextBlock Text="Подробности" Grid.Column="0" Grid.Row="3" Margin="5 5"/>
-        <TextBox x:Name="userDescriptionExp" Grid.Column="1" Grid.Row="3" MinHeight="150" Margin="5 5"/>
+        <TextBox x:Name="userDescriptionExp" Grid.Column="1" Grid.Row="3" MinHeight="150" Width="223" Margin="5 5" TextWrapping="Wrap"/>
         <Button x:Name="addExperience" Content="Сохранить" Grid.ColumnSpan="2" Grid.Row="4" Width="400"/>
         <TextBlock x:Name="textIncorrectData" FontStyle="Oblique" Foreground="Red" Grid.Row="5" Grid.ColumnSpan="3" HorizontalAlignment="Center"/>
     </Grid>

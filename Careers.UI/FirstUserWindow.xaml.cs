@@ -19,7 +19,7 @@ namespace Careers.UI {
     /// Логика взаимодействия для FirstWindow.xaml
     /// </summary>
     public partial class FirstUserWindow : Window {
-        private Repository repo;
+        private readonly Repository repo;
         public FirstUserWindow()
         {
             InitializeComponent();
@@ -30,8 +30,6 @@ namespace Careers.UI {
             this.repo = repo;
             InitializeComponent();
             textBlockGreeting.Text = $"{repo.Vacancies.Count} доступных вакансий, {repo.CurrentUser.Name}";
-            repo.Recover();
-            repo.SaveConfig();
             userInfo.Click += UserInfo_Click;
             userApplies.Click += UserApplies_Click;
             checkBoxSpecializeVacancies.Checked += CheckBoxSpecializeVacancies_Checked;
@@ -40,7 +38,7 @@ namespace Careers.UI {
         private void UserApplies_Click(object sender, RoutedEventArgs e)
         {
             var userApplies = new UserAppliesInfo(repo.CurrentUser);
-            userApplies.Show();
+            userApplies.ShowDialog();
         }
 
         private void Apply_Click(object sender, RoutedEventArgs e)
@@ -53,7 +51,7 @@ namespace Careers.UI {
             }
             else
             {
-                nothingClicked.Text = "Click on the vacancy before";
+                nothingClicked.Text = "Нужно выбрать вакансию сначала";
             }
         }
 
@@ -69,7 +67,7 @@ namespace Careers.UI {
             userInfoWindow.Show();
         }
 
-        private void checkBoxSpecializeVacancies_Unchecked(object sender, RoutedEventArgs e)
+        private void CheckBoxSpecializeVacancies_Unchecked(object sender, RoutedEventArgs e)
         {
             listBoxVacancies.ItemsSource = null;
             listBoxVacancies.ItemsSource = repo.Vacancies;

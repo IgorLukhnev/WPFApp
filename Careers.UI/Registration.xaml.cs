@@ -19,7 +19,7 @@ namespace Careers.UI {
     /// Логика взаимодействия для Registration.xaml
     /// </summary>
     public partial class Registration : Window {
-        private Repository repo;
+        private readonly Repository repo;
         public Registration()
         {
             InitializeComponent();
@@ -41,11 +41,22 @@ namespace Careers.UI {
             var password = employerPassword.Password;
             var company = employerCompany.Text;
             var birthDate = employerBirthDate.SelectedDate;
-            repo.CreateNewRecruter(name, surname, birthDate, company, username, password);
-            repo.SaveConfig();
-            var recruterWindow = new HRWindow(repo);
-            recruterWindow.Show();
-            this.Close();
+            if (Recruter.Validate(name, surname, company, birthDate, username))
+            {
+                if (repo.IsLoginFree(username)) textIncorrect.Text = $"Логин {username} занят!";
+                else
+                {
+                    repo.CreateNewRecruter(name, surname, birthDate, company, username, password);
+                    repo.SaveConfig();
+                    var recruterWindow = new HRWindow(repo);
+                    recruterWindow.Show();
+                    this.Close();
+                }
+            }
+            else
+            {
+                textIncorrect.Text = "Введены неправильные данные";
+            }
         }
 
         private void ButtonRegistration_Click(object sender, RoutedEventArgs e)
@@ -72,16 +83,21 @@ namespace Careers.UI {
             var company = userCompanyExp.Text;
             var description = userDescriptionExp.Text;
             if (WorkExperience.Validate(startExp, company, endExp, description) && 
-                Education.Validate(university, testDegree, specialization, graduateDate))
+                Education.Validate(university, testDegree, specialization, graduateDate) &&
+                User.Validate(name, surname, email, birthDate, nickname))
             {
-                var degree = (Degree)Enum.GetValues(typeof(Degree)).GetValue(userDegree.SelectedIndex);
-                repo.CreateNewUser(name, surname, email, birthDate, nickname, password, university, degree,
-                specialization, graduateDate, softSkills, hardSkills, startExp, endExp, company, description);
-                Console.WriteLine(repo.CurrentUser.Username);
-                repo.SaveConfig();
-                var userWindow = new FirstUserWindow(repo);
-                userWindow.Show();
-                this.Close();
+                if (repo.IsLoginFree(nickname)) textIncorrectData.Text = $"Логин {nickname} занят!";
+                else
+                {
+                    var degree = (Degree)Enum.GetValues(typeof(Degree)).GetValue(userDegree.SelectedIndex);
+                    repo.CreateNewUser(name, surname, email, birthDate, nickname, password, university, degree,
+                    specialization, graduateDate, softSkills, hardSkills, startExp, endExp, company, description);
+                    Console.WriteLine(repo.CurrentUser.Username);
+                    repo.SaveConfig();
+                    var userWindow = new FirstUserWindow(repo);
+                    userWindow.Show();
+                    this.Close();
+                }
             }
             else
             {

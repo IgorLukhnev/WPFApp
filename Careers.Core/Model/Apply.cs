@@ -23,6 +23,7 @@ namespace Careers.Core.Model {
         public int VacancyId { get; set; }
         public ApplyStatus Status { get; set; }
 
+
         public Apply(User user, Vacancy vacancy, int userId, int vacancyId)
         {
             Id = currentId++;

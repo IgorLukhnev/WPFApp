@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Careers.UI"
         mc:Ignorable="d"
-        Title="Мои " Height="450" Width="800">
+        Title="Страница рекрутера" Height="450" Width="1200">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
@@ -17,29 +17,30 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <TextBlock x:Name="textBlockGreetingHR" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" FontSize="18"/>
-        <CheckBox x:Name="checkBoxAppliedVacancies" Content="Показать вакансии с откликами" Grid.Column="1" Grid.Row="0" Checked="checkBoxAppliedVacancies_Checked" Unchecked="checkBoxAppliedVacancies_Unchecked"/>
+        <CheckBox x:Name="checkBoxAppliedVacancies" Content="Показать вакансии с откликами" Grid.Column="1" Grid.Row="0" Checked="CheckBoxAppliedVacancies_Checked" Unchecked="CheckBoxAppliedVacancies_Unchecked"/>
         <ListBox Grid.Row="1" Grid.Column="0" x:Name="listBoxVacancies">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition MinWidth="200"/>
-                            <ColumnDefinition MinWidth="200"/>
-                            <ColumnDefinition MinWidth="200"/>
+                            <ColumnDefinition Width="600"/>
+                            <ColumnDefinition MinWidth="150"/>
+                            <ColumnDefinition MinWidth="100"/>
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0">
                             <TextBlock Text="{Binding Title}" FontSize="18" FontWeight="Black"/>
                             <TextBlock Text="{Binding Recruter.Company}" FontSize="12" FontWeight="Light"/>
-                            <TextBlock Text="{Binding Description}" FontSize="14"/>
+                            <TextBlock Text="{Binding Description}" FontSize="14" Width="580" TextWrapping="Wrap"/>
                         </StackPanel>
                         <TextBlock Text="{Binding Salary}" Grid.Column="1"/>
-                        <Button x:Name="showApplies" Grid.Column="2" Content="Посмотреть отклики" Click="showApplies_Click"/>
+                        <Button x:Name="showApplies" Grid.Column="2" Content="Посмотреть отклики" Click="ShowApplies_Click"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
         <StackPanel Grid.Column="1" Grid.Row="1" MinWidth="100" MaxWidth="150" MinHeight="35" MaxHeight="50">
             <Button x:Name="addNewVacancy" Content="Добавить вакансию"/>
+            <Button x:Name="deleteVacancy" Content="Удалить выбранную вакансию"/>
         </StackPanel>
         <TextBlock x:Name="nothingClicked" FontStyle="Oblique" Foreground="Red" Grid.Row="2" Grid.ColumnSpan="3" HorizontalAlignment="Center"/>
     </Grid>

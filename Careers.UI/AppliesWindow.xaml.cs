@@ -19,7 +19,7 @@ namespace Careers.UI {
     /// Логика взаимодействия для AppliesWindow.xaml
     /// </summary>
     public partial class AppliesWindow : Window {
-        private Repository repo;
+        private readonly Repository repo;
         public AppliesWindow()
         {
             InitializeComponent();
@@ -29,11 +29,18 @@ namespace Careers.UI {
         {
             this.repo = repo;
             InitializeComponent();
+            repo.OnAppliesChanged += Repo_OnAppliesChanged;
             titleForAppliesList.Text = $"Отклики на {repo.CurrentVacancy.Title}";
             AppliesList.ItemsSource = repo.CurrentVacancy.Applies;
         }
 
-        private void viewExp_Click(object sender, RoutedEventArgs e)
+        private void Repo_OnAppliesChanged()
+        {
+            AppliesList.ItemsSource = null;
+            AppliesList.ItemsSource = repo.CurrentVacancy.Applies;
+        }
+
+        private void ViewExp_Click(object sender, RoutedEventArgs e)
         {
             var currentApply = AppliesList.SelectedItem;
             if (currentApply != null)
@@ -48,12 +55,12 @@ namespace Careers.UI {
             }
         }
 
-        private void returnBack_Click(object sender, RoutedEventArgs e)
+        private void ReturnBack_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
-        private void isConfirm_Click(object sender, RoutedEventArgs e)
+        private void IsConfirm_Click(object sender, RoutedEventArgs e)
         {
             var currentApply = AppliesList.SelectedItem;
             if (currentApply != null)
@@ -68,7 +75,7 @@ namespace Careers.UI {
             }
         }
 
-        private void isDenied_Click(object sender, RoutedEventArgs e)
+        private void IsDenied_Click(object sender, RoutedEventArgs e)
         {
             var currentApply = AppliesList.SelectedItem;
             if (currentApply != null)

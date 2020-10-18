@@ -19,7 +19,7 @@ namespace Careers.UI {
     /// Логика взаимодействия для HRWindow.xaml
     /// </summary>
     public partial class HRWindow : Window {
-        private Repository repo;
+        private readonly Repository repo;
         public HRWindow()
         {
             InitializeComponent();
@@ -32,9 +32,9 @@ namespace Careers.UI {
             //foreach (var vac in repo.CurrentHR.Vacancies)
             //    vac.Recover(repo.Applies, repo.Recruters);
             textBlockGreetingHR.Text = $"Привет, {repo.CurrentHR.Name}, выложенные вами вакансии";
-            repo.Recover();
             listBoxVacancies.ItemsSource = repo.CurrentHR.Vacancies;
             addNewVacancy.Click += AddNewVacancy_Click;
+            deleteVacancy.Click += DeleteVacancy_Click;
         }
 
         private void AddNewVacancy_Click(object sender, RoutedEventArgs e)
@@ -50,28 +50,42 @@ namespace Careers.UI {
             listBoxVacancies.ItemsSource = repo.CurrentHR.Vacancies;
         }
 
-        private void showApplies_Click(object sender, RoutedEventArgs e)
+        private void ShowApplies_Click(object sender, RoutedEventArgs e)
         {
             var CurrentVacancy = listBoxVacancies.SelectedItem;
             if (CurrentVacancy != null)
             {
                 repo.CurrentVacancy = (Vacancy)CurrentVacancy;
                 var appliesWindow = new AppliesWindow(repo);
-                appliesWindow.Show();
+                appliesWindow.ShowDialog();
             }
             else
             {
-                nothingClicked.Text = "Click on the vacancy before";
+                nothingClicked.Text = "Нужно выбрать вакансию";
             }
         }
 
-        private void checkBoxAppliedVacancies_Checked(object sender, RoutedEventArgs e)
+        private void DeleteVacancy_Click(object sender, RoutedEventArgs e)
+        {
+            repo.OnVacanciesChanged += Repo_OnVacanciesChanged;
+            var CurrentVacancy = listBoxVacancies.SelectedItem;
+            if (CurrentVacancy != null)
+            {
+                repo.DeleteVacancy((Vacancy)CurrentVacancy);
+            }
+            else
+            {
+                nothingClicked.Text = "Нужно выбрать вакансию";
+            }
+        }
+
+        private void CheckBoxAppliedVacancies_Checked(object sender, RoutedEventArgs e)
         {
             listBoxVacancies.ItemsSource = null;
             listBoxVacancies.ItemsSource = (List<Vacancy>)repo.CurrentHR.Vacancies.FindAll(v => v.Applies.Count > 0);
         }
 
-        private void checkBoxAppliedVacancies_Unchecked(object sender, RoutedEventArgs e)
+        private void CheckBoxAppliedVacancies_Unchecked(object sender, RoutedEventArgs e)
         {
             listBoxVacancies.ItemsSource = null;
             listBoxVacancies.ItemsSource = repo.CurrentHR.Vacancies;

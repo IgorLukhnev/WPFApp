@@ -89,5 +89,11 @@ namespace Careers.Core.Model {
                 };
             Applies = new List<Apply>();
         }
+
+        static public bool Validate(string name, string surname, string email, DateTime? birthDate, string username)
+        {
+            return !string.IsNullOrEmpty(name) & !string.IsNullOrEmpty(surname) & birthDate.HasValue &
+                !string.IsNullOrEmpty(email) & !string.IsNullOrEmpty(username);
+        }
     }
 }

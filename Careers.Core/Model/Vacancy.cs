@@ -17,7 +17,17 @@ namespace Careers.Core.Model {
         [JsonIgnore]
         public Recruter Recruter { get; set; }
         public int RecId { get; set; }
-
+        [JsonConstructor]
+        public Vacancy(int id, string title, string description, decimal salary, Recruter recruter, int rid)
+        {
+            Id = id;
+            Title = title;
+            Description = description;
+            Salary = salary;
+            Recruter = recruter;
+            RecId = rid;
+            currentId = id + 1;
+        }
         public Vacancy(string title, string description, decimal salary, Recruter recruter, int id)
         {
             Id = currentId++;

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Careers.UI"
         mc:Ignorable="d"
-        Title="FirstUserWindow" Height="450" Width="800">
+        Title="Личный кабинет" Height="450" Width="1200">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
@@ -17,23 +17,23 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <TextBlock x:Name="textBlockGreeting" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" FontSize="18"/>
-        <CheckBox x:Name="checkBoxSpecializeVacancies" Content="Показать вакансии для меня" Grid.Column="1" Grid.Row="0" Unchecked="checkBoxSpecializeVacancies_Unchecked"/>
+        <CheckBox x:Name="checkBoxSpecializeVacancies" Content="Показать вакансии для меня" Grid.Column="1" Grid.Row="0" Unchecked="CheckBoxSpecializeVacancies_Unchecked"/>
         <ListBox Grid.Row="1" Grid.Column="0" x:Name="listBoxVacancies">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="600"/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="100"/>
                         </Grid.ColumnDefinitions>
-                        <StackPanel Grid.Column="0">
+                        <StackPanel Grid.Column="0" HorizontalAlignment="Left">
                             <TextBlock Text="{Binding Title}" FontSize="18" FontWeight="Black"/>
-                            <TextBlock Text="{Binding Recruter.Company}" FontSize="12" FontWeight="Light"/>
+                            <TextBlock Text="{Binding Recruter.Company}" FontSize="12" FontWeight="Light" Width="580" TextWrapping="Wrap"/>
                             <TextBlock Text="{Binding Description}" FontSize="14"/>
                         </StackPanel>
-                        <TextBlock Text="{Binding Salary}" Grid.Column="1"/>
-                        <Button x:Name="buttonApplyForJob" Content="Откликнуться" Grid.Column="2" Click="Apply_Click"/>
+                        <TextBlock Text="{Binding Salary}" Grid.Column="1" HorizontalAlignment="Center"/>
+                        <Button x:Name="buttonApplyForJob" Content="Откликнуться" Grid.Column="2" HorizontalAlignment="Center" Click="Apply_Click"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
